@@ -9,8 +9,6 @@ int student_count = 0, teacher_count = 0;
 void* student(void* arg) {
     int id = *((int*)arg);
     printf("Student %d has entered.\n", id);
-
-    // Student gets their respective item
     if (id == 1) {
         sem_post(&pen_sem);
     } else if (id == 2) {
@@ -18,10 +16,7 @@ void* student(void* arg) {
     } else {
         sem_post(&question_paper_sem);
     }
-
-    sem_wait(&table_semaphore);  // Wait for access to the table
-
-    // Student gets the missing item from the table
+    sem_wait(&table_semaphore);  
     if (id == 1) {
         sem_wait(&paper_sem);
     } else if (id == 2) {
