@@ -45,11 +45,11 @@ void* teacher(void* arg) {
     }
     sem_post(&counter_mutex);
 
-    sem_wait(&teacher_queue);  // Wait for their turn at the counter
+    sem_wait(&teacher_queue);  
 
     printf("Teacher %d is issuing books.\n", id);
 
-    sem_post(&teacher_queue);  // Release the counter
+    sem_post(&teacher_queue);  
 }
 
 int main() {
